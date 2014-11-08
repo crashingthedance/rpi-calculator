@@ -1,0 +1,23 @@
+vis_team,vis_score,home_team,home_score,neutral
+Notre Dame,0,Valparaiso,1,
+Valparaiso,1,Indiana,0,
+Valparaiso,0,Purdue,1,
+Michigan State,0,Notre Dame,1,
+Notre Dame,0,Purdue,1
+Notre Dame,0,IUPUI,1
+Indiana,0,Kentucky,1
+Indiana,0,Ball State,1
+Duke,0,Purdue,1,N
+UCLA,0,Purdue,1
+IUPUI,0,Duke,1,N
+Duke,1,IUPUI,0,
+IUPUI,0,Duke,1,
+IUPUI,0,Duke,1
+IUPUI,0,UCLA,1
+Ball State,0,UCLA,1
+UCLA,1,Ball State,0
+Kentucky,0,Ball State,1
+Schmoo,0,Michigan State,1
+Schmoo,0,Michigan State,1
+Schmoo,0,Kentucky,1
+Schmoo,0,Kentucky,1,N
