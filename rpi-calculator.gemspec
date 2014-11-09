@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'crashing_the_dance/rpi_calculator/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "ctd-rpi-calculator"
+  spec.name          = "rpi-calculator"
   spec.version       = CrashingTheDance::RpiCalculator::VERSION
   spec.authors       = ["Andy Cox"]
   spec.email         = ["andy@crashingthedance.com"]
