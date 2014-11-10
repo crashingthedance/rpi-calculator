@@ -9,6 +9,15 @@ describe "RPI calculator" do
 
       expect(teams.size).to eql(teams.size)
     end
+
+    it "returns your custom team attributes" do
+      id = 1
+      teams = teams_fixture 'single', id
+      games = []
+      rpi = CrashingTheDance::RpiCalculator.calculate teams, games
+
+      expect(teams.first.id).to eql(id)
+    end
   end
 
   context "no games played" do
