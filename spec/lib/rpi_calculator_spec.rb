@@ -20,6 +20,37 @@ describe "RPI calculator" do
     end
   end
 
+  context "one game played" do
+    before(:each) do
+      @teams = teams_fixture 'onegame'
+      games = games_fixture 'onegame'
+      @rpi = CrashingTheDance::RpiCalculator.calculate @teams, games
+    end
+
+    it "calculates the right win/loss record" do
+      valpo = @rpi.find { |team| team.team.name.eql? "Valparaiso" }
+      expect(valpo.wins).to eq(1)
+      expect(valpo.losses).to eq(0)
+      expect(valpo.win_percentage).to be_within(0.0001).of(1.0000)
+    end
+
+    it "calculates the RPI OWP" do
+      valpo = @rpi.find { |team| team.team.name.eql? "Valparaiso" }
+      expect(valpo.owp).to be_within(0.0001).of(0.0)
+    end
+
+    it "calculates the RPI OOWP" do
+      valpo = @rpi.find { |team| team.team.name.eql? "Valparaiso" }
+      expect(valpo.oowp).to be_within(0.0001).of(0.0)
+    end
+
+    it "calculates the RPI" do
+      valpo = @rpi.find { |team| team.team.name.eql? "Valparaiso" }
+      # since OWP/OOWP is 0, RPI is 0.25
+      expect(valpo.rpi).to be_within(0.0001).of(0.2500)
+    end
+  end
+
   context "no games played" do
     # do this and clean up the code
     before(:each) do

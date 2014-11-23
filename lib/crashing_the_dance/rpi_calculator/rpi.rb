@@ -48,7 +48,7 @@ module CrashingTheDance
           sum_owp = games.inject(0.0) do |sum, game|
             sked = opponent_schedule game.opponent, games_by_team
             ow = sked.inject(0) { |wins, og| wins + og.wins }
-            sum + (ow.to_f / sked.count.to_f)
+            sum + (sked.empty? ? 0.0 : (ow.to_f / sked.count.to_f))
           end
           @owp = sum_owp / games.count.to_f
         end
