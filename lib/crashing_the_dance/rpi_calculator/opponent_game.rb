@@ -54,6 +54,10 @@ module CrashingTheDance
         @which_team == :visitor && !neutral?
       end
 
+      def conference?
+        game.conference?
+      end
+
       private
 
       def scores

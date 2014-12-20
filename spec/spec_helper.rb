@@ -11,9 +11,13 @@ Team = Struct.new(:name, :id) do
   end
 end
 
-Game = Struct.new(:vis_team, :home_team, :vis_score, :home_score, :neutral) do
+Game = Struct.new(:vis_team, :home_team, :vis_score, :home_score, :neutral, :conference) do
   def neutral?
     !neutral.nil? && neutral == "N"
+  end
+
+  def conference?
+    !conference.nil? && conference == "C"
   end
 end
 
@@ -29,7 +33,7 @@ def games_fixture(which)
                       teams.find { |team| team.name.eql?(row["home_team"]) },
                       row["vis_score"].to_i,
                       row["home_score"].to_i,
-                      row["neutral"])
+                      row["neutral"], row["conference"])
   end
   games
 end

@@ -9,9 +9,13 @@ module CrashingTheDance
     # also use fixtures to test them. simple, lightweight.
     def self.calculate(teams, games)
       by_team = games_by_team(teams, games)
-      teams = calculate_rpi teams, by_team
+      teams = build_rpi teams, by_team
       calculate_owp teams, by_team
       calculate_oowp teams
+      calculate_conference_owp teams, by_team
+      calculate_conference_oowp teams
+      calculate_nonconference_owp teams, by_team
+      calculate_nonconference_oowp teams
       teams
     end
 
@@ -29,7 +33,31 @@ module CrashingTheDance
       end
     end
 
-    def self.calculate_rpi(teams, games_by_team)
+    def self.calculate_conference_oowp(teams)
+      teams.each do |team|
+        team.calculate_conference_oowp teams
+      end
+    end
+
+    def self.calculate_conference_owp(teams, games_by_team)
+      teams.each do |team|
+        team.calculate_conference_owp(games_by_team)
+      end
+    end
+
+    def self.calculate_nonconference_oowp(teams)
+      teams.each do |team|
+        team.calculate_nonconference_oowp teams
+      end
+    end
+
+    def self.calculate_nonconference_owp(teams, games_by_team)
+      teams.each do |team|
+        team.calculate_nonconference_owp(games_by_team)
+      end
+    end
+
+    def self.build_rpi(teams, games_by_team)
       teams.map { |team| RPI.new team, games_by_team[team] }
     end
 
